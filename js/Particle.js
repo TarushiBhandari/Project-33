@@ -3,7 +3,7 @@ class Particle {
 
         var options ={
             restitution:0.4
-        }
+        };
         this.r=r;
       
         this.body = Bodies.circle(x, y, this.r,options);       
