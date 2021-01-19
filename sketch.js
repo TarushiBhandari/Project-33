@@ -8,6 +8,7 @@ var particles = [];
 var plinkos = [];
 var divisions= [];
 var divisionHeight=300;
+var line;
 var score =0;
 var count=0;
 var particle;
@@ -18,6 +19,7 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
   ground = new Ground(width/2,height,width,20);
+  line= createSprite(width/2,470,1000,10);
 
    for (var k = 0; k <=width; k = k + 80) {
      divisions.push(new Division(k, height-divisionHeight/2, 10, divisionHeight));
@@ -47,6 +49,7 @@ function draw() {
   text("Score : "+score,20,40);
 
   Engine.update(engine);
+  drawSprites();
   ground.display();
   textSize(23)
   text(" 500 ", 5, 550);
