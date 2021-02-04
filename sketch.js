@@ -103,6 +103,13 @@ function draw() {
   
     }
 
+    if(count===5 && gameState==="end"){
+      background("black");
+      fill("white");
+      textSize(40);
+      text("GAME OVER",300,300);
+    }
+
    for (var k = 0; k < divisions.length; k++) {
      divisions[k].display();
    }
