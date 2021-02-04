@@ -20,6 +20,7 @@ function setup() {
   world = engine.world;
   ground = new Ground(width/2,height,width,20);
   line= createSprite(width/2,470,1000,10);
+  line.visible= false;
 
    for (var k = 0; k <=width; k = k + 80) {
      divisions.push(new Division(k, height-divisionHeight/2, 10, divisionHeight));
@@ -45,12 +46,14 @@ function setup() {
 
 function draw() {
   background("black");
-  textSize(18)
+  fill("yellow");
+  textSize(20)
   text("Score : "+score,20,40);
 
   Engine.update(engine);
-  drawSprites();
   ground.display();
+  drawSprites();
+  
   textSize(23)
   text(" 500 ", 5, 550);
   text(" 500 ", 80, 550);
@@ -67,14 +70,6 @@ function draw() {
      
    }
    
-   if(frameCount%60===0){
-     particles.push(new Particle(random(width/2-100, width/2+100), 10,10));
-     score++;
-   }
- 
-   for (var j = 0; j < particles.length; j++) {
-     particles[j].display();
-   }
    if(particle!=null)
     {
        particle.display();
@@ -113,7 +108,18 @@ function draw() {
    }
 }
 
-function mousePressed(){
+function touchStarted(){
+  if(gameState!=="end"){
+      count++;
+     particle=new Particle(mouseX, 10, 10, 10); 
+  }   
+}
+
+function keyPressed(){
+
+  if(keyCode===32){
+    console.log("Space key is pressed");
+  }
   if(gameState!=="end"){
       count++;
      particle=new Particle(mouseX, 10, 10, 10); 
